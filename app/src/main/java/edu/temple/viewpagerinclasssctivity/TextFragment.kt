@@ -11,6 +11,7 @@ import android.widget.TextView
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 
+
 /**
  * A simple [Fragment] subclass.
  * Use the [TextFragment.newInstance] factory method to
@@ -20,6 +21,9 @@ class TextFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
 
+    private val textView: TextView by lazy {
+        requireView().findViewById(R.id.textView)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,6 +39,10 @@ class TextFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_text, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        textView.text = param1
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
